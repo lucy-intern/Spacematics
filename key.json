@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "spacematics",
+  "private_key_id": "77d7524b5c67f47543ac7ecb6ad69f69053247fd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCQ/kfvsyraWzJB\ncpHmmehwoFwEBrOhi+b3L0vzC6Ekbg+j/XyXEwdJJ8n24awqoA9E763wSsnW/eKj\n3j7r486jo6lmMWzHOzri8X5xtLVLQy/fBvmlHGJPfb93gqKctiKingTJzAQxiczT\norDpFxfNJlFAWUihsRoz/56Fifmdy/Lr8+ouAHMc4drlr922GShi1tWY1wz1xXxe\nWclhJOnyVmACJPRffROMkEUIH67qLUt3vmevrWT+0l3B1oVVmOKKdFEOSHQcf9Ha\n6ViwU4OgPX9k73B+jBbgPioXGKcqFOzkrDBoxmnz6BrzjUhdj3Y6eMjBJsoPlNOq\nXmb9s86vAgMBAAECggEAPZ7b2rq1+SPt6VO0PyFk4Ey+nnVsrTjkeWPv7sSgAPgH\njKXj597N52DSHCrPvTPWGXGVZjyaqFSxF/yRmDXycahSC5zwwoFhJucEWnW24NwW\ngb4Ypfu4qljiYPuzeU+My7jFhy++DoGme8E2V3GZi3X/7Q2k6Rb38GZwLAe1/sH1\nFMLPgqcJ8n5VMdMubrsI1QfAMVSYwuZA2iZvYKO1QH/7UqCMyycr6O5ZKNhohKrz\nfFkxQrjpGrezSNYB1KJYV043k6m0IX+mt5sST1P3gSh/xiwdYj+tLGW8IlnM6dXM\nmZDkkKH0lj8wjJ51cQIVqH/6BLc4///WN4KGEI7HmQKBgQDMwpv9QswW1e9uTSkV\nh5QDKrFaPcBCylV/mVruJd4yJxH1ZMG5sxcUWIIq3ywCH5XnRHvaWwah2Buxi2Ll\nFwjgjQSCPbsLqylaD5ORgEdC2dnPYsLeGO0FpuQd5UT0ZOJlH3yP49Mw0q1VO1Bj\ne/ZcfxID/eOr2BjO8PYdeJjfdwKBgQC1Rt8V1Fhquukk1V6JHKvDD3zwe+1CExI9\nGHV4MxAkIl7uKfb5nszddOWsbG3RrzhUSGTHhXurrO+AmYpFj9zCfsolORKu8Uqg\nql9cWpP0XeJzGwO5roV6v5YpsqXaumZ4iXYRWLsNooQgDHd113zGrJ7hlIk+1/5B\nwEoX2XuIiQKBgQCOPfcNJdUPXAjbUCDlQuzwkjzoGpOwEkz4ujjvzUChCIEyPo9R\niHbU/HNYgvZYd0a0hN+hHbDqx2zdlp3Z1XmmPHBQZb/FaF7uoHl8D2fxqdLkfZAv\np5MoZPp9RiLzwA2CADCQ6MxyUzh0SCMdKSVItkF2om4Bl7oMMFpYuMlCGwKBgQCs\nj6R5MURhhT++0mZFe0d+TdYPTskR5vmrswbPvzwUSau4Z7Y09RfrkAW6VxVLT9L9\nWFSnIcgSKnNrJb3cbhAmDW/8cxH3+rWhr81LKuZA7sZL8GFhdmKV8J7PXsJHLr2w\n7Jm59Y9KcXP41iU5xkF/Fn/AGRd0/UOJ77QYc+0GkQKBgENLXhKMNN73P9z8jxBa\nO91Ed1pQskP5AaFWHU3QrIIkqVQ1BgL9UjM1Ot+Y1xTOGZA1IkvPw2PmfpHwexgW\nTbUz1PZNpWkIYa5NDxmiUE4JKW+92PNwnKXvciHis8CaQYG0WaKZBnbA7q3P9t3A\nmkw2qww0P6uF+0lUhyuZKnCx\n-----END PRIVATE KEY-----\n",
+  "client_email": "automltest@spacematics.iam.gserviceaccount.com",
+  "client_id": "111965674488761534561",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/automltest%40spacematics.iam.gserviceaccount.com"
+}
