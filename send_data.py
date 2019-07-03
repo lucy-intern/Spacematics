@@ -1,5 +1,5 @@
 #*******************************************************************************/
-# Name:    pre_jarvis2.py
+# Name:    send_data.py
 # Purpose: This code captures an image through the PI Camera and sends it to the VM instance
 # Input:   NONE
 # Output:  Image sent to the VM instance
