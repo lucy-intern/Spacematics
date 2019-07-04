@@ -1,11 +1,12 @@
-#*******************************************************************************/
-# Name:    pre_jarvis2.py
-# Purpose: This code takes input image and process it through face_recognition and AutoML, giving output data and storing it in SQL database
-# Input:   Image file from raspberry pi
-# Output:  Data sent to SQL database and image is uploaded to google cloud bucket
-# Authors: Akshit Bagde, B. Bharatwaajan, Sarah
-# Dated:   5 July, 2019
-#*******************************************************************************/
+#***********************************************************************************************#
+# Name:    pre_jarvis2.py									#
+# Purpose: This code takes input image and process it through face_recognition and AutoML, 	#
+#	   giving output data and storing it in SQL database					#
+# Input:   Image file from raspberry pi								#
+# Output:  Data sent to SQL database and image is uploaded to google cloud bucket		#
+# Authors: Akshit Bagde, B. Bharatwaajan, Sarah							#
+# Dated:   5 July, 2019										#
+#***********************************************************************************************#
 
 import numpy as np
 import sys
@@ -49,16 +50,24 @@ This function get_prediction, takes input-
   3. model_id (unique id of our AutoMl trained model)
   4. number_of_users (Input from the face recognition code)
 
-This function takes the image input,returns the output confidence scores from model and stores everything into SQL database
+This function takes the image input,returns the output confidence scoresfrom model and stores
+everything into SQL database
 '''
 def get_prediction(content, project_id, model_id,number_of_users):
   prediction_client = automl_v1beta1.PredictionServiceClient()
   name = 'projects/{}/locations/us-central1/models/{}'.format(project_id, model_id)
   payload = {'image': {'image_bytes': content }}
-  params = { "score_threshold":"0.0" }  # Returns the output of activities having confidence score is greater than "0.0"
+
+  # Return the output of activities having confidence score is greater than "0.0"
+  params = { "score_threshold":"0.0" }  
+
   request = prediction_client.predict(name, payload, params)
+	
+  # Returns a dictionary of all labels that have confidence score greater than 0.0
   labels = request.payload
-  conf = [0.0, 0.0, 0.0, 0.0] #Array to store confience scores of activities
+
+  #Array to store confience scores of activities
+  conf = [0.0, 0.0, 0.0, 0.0] 
   i = 0
   while i<len(labels):
   	image_label = labels[i].display_name # print this
@@ -70,7 +79,7 @@ def get_prediction(content, project_id, model_id,number_of_users):
   	i = i+1
 
   #Insert into SQL database
-  sql = "INSERT INTO Jarvis2 (Eating, Idle, Phone, Reading, RID,USERS) VALUES (%s, %s, %s, %s, %s, %s)"
+  sql="INSERT INTO Jarvis2 (Eating, Idle, Phone, Reading, RID,USERS) VALUES (%s, %s, %s, %s, %s, %s)"
   val = (conf[0], conf[1], conf[2], conf[3], '0',number_of_users)
   myc.execute(sql,val)
   mydb.commit()
@@ -92,27 +101,46 @@ while True:
       
       #Face Recognition
       pic = cv2.imread('data_rpi0_copy.jpg')
-      pic = cv2.resize(pic,(0,0),fx =2,fy=2 ) #Resize image for face_recognition
-      pic = pic[:,:,::-1] # changing the RGB faces captured by Rpi to BGR format for face_recognition to work on
-      detected_names = [] # list to store the faces identified in the current frame
-      number_of_faces = len(fr.face_locations(pic)) # the function returns the locations of the faces identified in the frame
+      
+      #Resize image for face_recognition
+      pic = cv2.resize(pic,(0,0),fx =2,fy=2 )
+    
+      #changing the RGB faces captured by Rpi to BGR format for face_recognition to work on
+      pic = pic[:,:,::-1] 
+
+      #list to store the faces identified in the current frame
+      detected_names = [] 
+
+      #the function returns the locations of the faces identified in the frame
+      number_of_faces = len(fr.face_locations(pic)) 
       print('Number of faces: '+str(number_of_faces))
       face_locations = fr.face_locations(pic)
-      face_encodings = fr.face_encodings(pic,face_locations) # returns the face encodings of the faces in the in the face_locations list 
+
+      #returns the face encodings of the faces in the in the face_locations list 
+      face_encodings = fr.face_encodings(pic,face_locations) 
       if number_of_faces>0:  
-        for face_encoding in face_encodings:  
-   	       matches = fr.compare_faces(known_faces,face_encoding,tolerance = 0.5) # The distance between two faces in the euclidean distance sense is et to be 0.5 for them to be categorised as different
+        for face_encoding in face_encodings:
+		
+              """The distance between two faces in the euclidean distance sense is set to be 0.5 for 
+	      them to be categorised as different"""
+   	       matches = fr.compare_faces(known_faces,face_encoding,tolerance = 0.5) 
   	       name = None
 	         if True in matches:
 	           first_match_index = matches.index(True)
 	           name = face_names[first_match_index]
-             detected_names.append(name) # If any faces match with the already known faces, we add that name to the detected names list of this frame
+			
+	     """If any faces match with the already known faces, we add that name to the detected 
+	     names list of this frame"""
+             detected_names.append(name) 
 	         if sum(matches)==0:
 	           known_faces.append(face_encoding)
              user_number = user_number +1
 	           name = "user"+str(user_number)
 	           face_names.append(name)
-	           detected_names.append(name) # If a new face has been identified, he is added to the known face encodings and also to the detected names list
+	
+	           """If a new face has been identified, he is added to the known face encodings and 
+		also to the detected names list"""
+	           detected_names.append(name) 
           print("Detected faces: "+str(detected_names)) 
     
     #Calling get_prediction function
