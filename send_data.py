@@ -9,15 +9,18 @@
 #*******************************************************************************/
 
 
-
 import os
 from picamera import PiCamera
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="key.json" # Gives access for the code to use the Google Cloud Project 
+ # Gives access for the code to use the Google Cloud Project
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="key.json" 
+
 camera = PiCamera()
 
 while True:
     camera.start_preview()
-    camera.capture('/home/thinkphi/data_rpi.jpg')
-    camera.stop_preview()    
-    os.system('gcloud compute scp data_rpi.jpg lucy_intern@instanceforvision:') #sends the image
+    camera.capture('/home/thinkphi/data_rpi0.jpg')
+    camera.stop_preview()   
+     
+     #sends the image to the virtual machine on the cloud
+    os.system('gcloud compute scp data_rpi0.jpg lucy_intern@jarvis-instance:')
